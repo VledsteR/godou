@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxif3y30k7e2l"]
+
+[ext_resource type="Script" uid="uid://dwfs6p5yjc85m" path="res://plaer_cotroller.gd" id="1_6qxjm"]
+[ext_resource type="Texture2D" uid="uid://bhyl63um7s1sb" path="res://medium_rock.png" id="1_l24vl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6qxjm"]
+radius = 12.0
+height = 24.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6qxjm"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="plaer" type="CharacterBody2D"]
+script = ExtResource("1_6qxjm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l24vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6qxjm")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6qxjm")
